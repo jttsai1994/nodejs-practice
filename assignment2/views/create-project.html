@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/create-project" method="post">
+        <h3>年度</h3>
+        <input type="radio"  name ="whichyear" id="year-before"><label for="year-before" id="yb"></label>
+        <input type="radio"  name ="whichyear" id="year-now" ><label for="year-now" id="yn"></label>
+        <input type="radio"  name ="whichyear" id="year-after"  ><label for="year-after" id="ya"></label>
+        <h3>項目名稱</h3>
+        <input type="text" name="projectName"><br>
+        <button type="submit" >建立</button>
+        <!-- <label for="year-before"></label><input type="radio" name="whichyear" id="year-before">
+        <input type="radio" name="whichyear" id="year-now">
+        <input type="radio" name="whichyear" id="year-after"> -->
+
+    </form>
+    <script>
+        const d = new Date();
+        const thisYearNum = d.getFullYear().toString().slice(-2); //取得現在年度的末兩位數字 例如2022年=> 22
+        let lastYear = `FY${Number(thisYearNum)-1}${Number(thisYearNum)}`; //前一財年的字串 
+        let thisYear = `FY${Number(thisYearNum)}${Number(thisYearNum)+1}`; //當年財年的字串
+        let nextYear = `FY${Number(thisYearNum)+1}${Number(thisYearNum)+2}`;//後一財年的字串
+        //把財年的字串塞入表格的label中
+        document.getElementById('yb').innerHTML = lastYear; 
+        document.getElementById("yn").innerHTML = thisYear;
+        document.getElementById("ya").innerHTML = nextYear;
+        //把財年的字串當成input-radio送出後的值
+        document.getElementById("year-before").value = lastYear;
+        document.getElementById("year-now").value = thisYear;
+        document.getElementById("year-after").value = nextYear;
+        </script>
+</body>
+</html>
