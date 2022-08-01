@@ -7,7 +7,7 @@ class Project {
     }
     save() {
         const db = getDb();
-        return db.collection('projects') 
+        return db.collection('projects') //指定collection
         .insertOne(this)   //在這邊insert資料入mongoDB
         .then(result=>{
             console.log(result);

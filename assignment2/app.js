@@ -11,7 +11,7 @@ const createProjectRoutes = require('./routes/create-project');
 const {mongoConnect} = require('./util/database');
 // add a parser to parse req.post.body 
 app.use(bodyParser.urlencoded({extended:true}));
-
+app.use(express.static(path.join(__dirname,'public'))); // 會去找public資料夾裡的css, 所以在網頁上載入css樣式時,link的root path是public
 app.use(adminRoutes);
 
 app.use(shopRoutes);
